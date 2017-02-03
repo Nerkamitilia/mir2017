@@ -1,5 +1,9 @@
 from mido import MidiFile
-for msg in MidiFile('ex1a.mid'):
-	print msg
-	#if msg.type == 'lyrics':
-	#	print msg.text
+import os
+
+for filename in os.listdir("."):
+	if filename.endswith('.mid'):
+		print filename
+		for msg in MidiFile(filename):
+			if msg.type == 'lyrics':
+				print '\t{}'.format(msg.text)
