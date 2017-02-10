@@ -1,9 +1,15 @@
 from mido import MidiFile
 import os
 
-for filename in os.listdir("."):
+mididir = 'midifiles/kpcorpus'
+
+for filename in os.listdir(mididir):
 	if filename.endswith('.mid'):
 		print filename
-		for msg in MidiFile(filename):
+		filepath = os.path.join(mididir, filename)
+		for msg in MidiFile(filepath):
+			print msg
 			if msg.type == 'lyrics':
-				print '\t{}'.format(msg.text)
+				print '---------------- CHORD -------------------'
+				#print '\t{}'.format(msg.text)
+	break
